@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Lang xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ts_StartText>スタート</ts_StartText>
+  <ts_ResetText>リセット</ts_ResetText>
+  <ts_ExitText>終了</ts_ExitText>
+  <ts_SeatText>統計</ts_SeatText>
+  <ts_TotaltypeText>総タイプ数</ts_TotaltypeText>
+  <ts_TotslcollectText>総有効タイプ数</ts_TotslcollectText>
+  <ts_AcctuaryText>タイピング精度</ts_AcctuaryText>
+  <ts_TotalclearText>総クリア数</ts_TotalclearText>
+  <ts_TotalscoreText>合計スコア</ts_TotalscoreText>
+  <ts_ClearText>スコアデータのクリア</ts_ClearText>
+  <ts_ClearreallyText>...実行しますか?</ts_ClearreallyText>
+  <ts_HelpText>ヘルプ</ts_HelpText>
+  <ts_AboutText>このアプリケーションについて</ts_AboutText>
+  <tx_GameoverText>ゲームオーバー!</tx_GameoverText>
+  <tx_LastscoreText>スコア</tx_LastscoreText>
+  <tx_LasthighscoreText>ハイスコア</tx_LasthighscoreText>
+  <tx_RemaintimeText>TIME</tx_RemaintimeText>
+</Lang>
