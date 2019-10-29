@@ -53,7 +53,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="zawa_ch">
-      <HintPath>..\..\zawa_ch\zawa_ch\bin\Release\zawa_ch.dll</HintPath>
+      <HintPath>..\Resources\zawa_ch.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
