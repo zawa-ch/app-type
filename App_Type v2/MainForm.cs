@@ -44,6 +44,7 @@ namespace App_Type_v2
 		int CollectType = 0;
 		int Cleared = 0;
 		int Score = 0;
+		int Score_get = 0;
 		string InputKey = "";
 		string Disp_Jpn = "";
 		string Disp_Kana = "";
@@ -318,6 +319,7 @@ namespace App_Type_v2
 						CollectType++;
 						RemainTime += scorebuf * 4;
 						Score += scorebuf;
+						Score_get += scorebuf;
 						Disp_Kana = Disp_Kana.Substring(scorebuf);
 						InputKey = "";
 					}
@@ -327,12 +329,12 @@ namespace App_Type_v2
 					Cleared++;
 					RemainTime += Type_kana[Index].Length;
 					TextPick();
-					MainTick.Interval = (int)(200 / (1.00 + (0.05 * Cleared)));
 				}
+				MainTick.Interval = (int)(200 / (1.0 + (0.005 * Score_get)));
 				MainLabel.Text = Disp_Jpn;
 				CaptionLabel.Text = Disp_Kana;
 				InputLabel.Text = InputKey;
-				SpeedLabel.Text = "Speed: x" + (1.0 + 0.05 * Cleared).ToString("f2");
+				SpeedLabel.Text = "Speed: x" + (1.0 + 0.005 * Score_get).ToString("f2");
 				RemainTimeLabel.Text = AppLang.tx_RemaintimeText + ": " + RemainTime.ToString();
 			}
 		}

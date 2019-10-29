@@ -1,0 +1,832 @@
+<?xml version="1.0"?>
+<doc>
+	<assembly>
+		zawa_ch
+	</assembly>
+	<members>
+		<!-- zawa_ch -->
+
+		<!-- zawa_ch.Point2D -->
+		<member name="T:zawa_ch.Point2D">
+			<summary>2次元の値を持つ点情報を保持し、ベクトルの計算・及び変換の機能を提供します</summary>
+		</member>
+		<member name="T:zawa_ch.Point2D.Rect2D">
+			<summary>軸座標</summary>
+		</member>
+		<member name="T:zawa_ch.Point2D.Pole2D">
+			<summary>極座標</summary>
+		</member>
+		<member name="P:zawa_ch.Point2D.Rect">
+			<summary>軸座標表記</summary>
+		</member>
+		<member name="P:zawa_ch.Point2D.Pole">
+			<summary>極座標表記</summary>
+		</member>
+		<member name="M:zawa_ch.Point2D(zawa_ch.Point2D.Rect2D)">
+			<summary>このオブジェクトを初期化します</summary>
+			<param name="InitPoint">初期化時に代入するベクトル</param>
+		</member>
+		<member name="M:zawa_ch.Point2D(zawa_ch.Point2D.Pole2D)">
+			<summary>このオブジェクトを初期化します</summary>
+			<param name="InitPoint">初期化時に代入するベクトル</param>
+		</member>
+		<member name="M:zawa_ch.Point2D.Dot(zawa_ch.Point2D,zawa_ch.Point2D)">
+			<summary>2つのベクトルの内積を求めます</summary>
+			<param name="left">内積の左オペランド</param>
+			<param name="right">内積の右オペランド</param>
+		</member>
+		<member name="M:zawa_ch.Point2D.Rec(System.Double,System.Double)">
+			<summary>2つの浮動小数点数から2次元軸座標ベクトルを生成します</summary>
+			<param name="x">ベクトルのx座標</param>
+			<param name="y">ベクトルのy座標</param>
+		</member>
+		<member name="M:zawa_ch.Point2D.Rec(zawa_ch.Point2D.Pole2D)">
+			<summary>極座標から軸座標に変換します</summary>
+			<param name="From">変換元となる極座標表示ベクトル</param>
+		</member>
+		<member name="M:zawa_ch.Point2D.Pol(System.Double,System.Double)">
+			<summary>2つの浮動小数点数から2次元極座標ベクトルを生成します</summary>
+			<param name="r">ベクトルの半径</param>
+			<param name="th">ベクトルの角度</param>
+		</member>
+		<member name="M:zawa_ch.Point2D.Pol(zawa_ch.Point2D.Rect2D)">
+			<summary>軸座標から極座標に変換します</summary>
+			<param name="From">変換元となる軸座標表示ベクトル</param>
+		</member>
+
+		<!-- zawa_ch.Point3D -->
+		<member name="T:zawa_ch.Point3D">
+			<summary>3次元の値を持つ点情報を保持し、ベクトルの計算・及び変換の機能を提供します</summary>
+		</member>
+		<member name="T:zawa_ch.Point3D.Rect3D">
+			<summary>軸座標</summary>
+		</member>
+		<member name="T:zawa_ch.Point3D.Pole3D">
+			<summary>極座標</summary>
+		</member>
+		<member name="P:zawa_ch.Point3D.Rect">
+			<summary>軸座標表記</summary>
+		</member>
+		<member name="P:zawa_ch.Point3D.Pole">
+			<summary>極座標表記</summary>
+		</member>
+		<member name="M:zawa_ch.Point3D.Point3D(zawa_ch.Point3D.Rect3D)">
+			<summary>このオブジェクトを初期化します</summary>
+			<param name="InitPoint">初期化時に代入するベクトル</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Point3D(zawa_ch.Point3D.Pole3D)">
+			<summary>このオブジェクトを初期化します</summary>
+			<param name="InitPoint">初期化時に代入するベクトル</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Dot(zawa_ch.Point3D,zawa_ch.Point3D)">
+			<summary>2つのベクトルの内積を求めます</summary>
+			<param name="left">内積の左オペランド</param>
+			<param name="right">内積の右オペランド</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Cross(zawa_ch.Point3D,zawa_ch.Point3D)">
+			<summary>2つのベクトルの外積を求めます</summary>
+			<param name="left">内積の左オペランド</param>
+			<param name="right">内積の右オペランド</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Product_ST(zawa_ch.Point3D,zawa_ch.Point3D,zawa_ch.Point3D)">
+			<summary>スカラー三重積を求めます((va×vb)・vc)</summary>
+		</member>
+		<member name="M:zawa_ch.Point3D.Rec(System.Double,System.Double,System.Double)">
+			<summary>3つの浮動小数点数から3次元軸座標ベクトルを生成します</summary>
+				<param name="x">ベクトルのx座標</param>
+				<param name="y">ベクトルのy座標</param>
+				<param name="z">ベクトルのz座標</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Rec(zawa_ch.Point3D.Pole3D)">
+			<summary>極座標から軸座標に変換します</summary>
+			<param name="From">変換元となる極座標表示ベクトル</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Pol(System.Double,System.Double,System.Double)">
+			<summary>3つの浮動小数点数から3次元極座標ベクトルを生成します</summary>
+				<param name="r">ベクトルの半径</param>
+				<param name="ta">x-y平面上でのx+を0とする角度</param>
+				<param name="tc">x-y平面とベクトルがなす角</param>
+		</member>
+		<member name="M:zawa_ch.Point3D.Pol(zawa_ch.Point3D.Rect3D)">
+			<summary>極座標から軸座標に変換します</summary>
+			<param name="From">変換元となる極座標表示ベクトル</param>
+		</member>
+
+		<!-- zawa_ch.Time -->
+		<member name="T:zawa_ch.Time">
+			<summary>時間情報を保持し、時間としての表現や時間計算などの機能を提供します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.Day">
+			<summary>日の部分を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.Hour">
+			<summary>時の部分を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.Minute">
+			<summary>分の部分を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.Second">
+			<summary>秒の部分を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.MiliSecond">
+			<summary>ミリ秒の部分を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.TotalDays">
+			<summary>日を単位としてこのオブジェクトの表す時間を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.TotalHours">
+			<summary>時を単位としてこのオブジェクトの表す時間を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.TotalMinutes">
+			<summary>分を単位としてこのオブジェクトの表す時間を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.TotalSeconds">
+			<summary>秒を単位としてこのオブジェクトの表す時間を取得・代入します</summary>
+		</member>
+		<member name="P:zawa_ch.Time.TotalMiliSeconds">
+			<summary>ミリ秒を単位としてこのオブジェクトの表す時間を取得・代入します</summary>
+		</member>
+		<member name="M:zawa_ch.Time.Duration()">
+			<summary>このオブジェクトの絶対値の値を持つ新しいTimeオブジェクトを返します</summary>
+		</member>
+		<member name="M:zawa_ch.Time.Compere(zawa_ch.Time)">
+			<summary>このオブジェクトとの比較を行い、大きい・小さい・等しいのいずれかを返します</summary>
+			<param name="value">比較対象</param>
+			<returns>等しい場合0、valueが大きいと1、valueが小さいと-1を返します</returns>
+		</member>
+		<member name="M:zawa_ch.Time.Set(System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)">
+			<summary>変数を代入した新しいTime型を返します</summary>
+			<param name="Minus">取る値が負の値かどうかのフラグ</param>
+			<param name="Day">日</param>
+			<param name="Hour">時</param>
+			<param name="Minute">分</param>
+			<param name="Second">秒</param>
+			<param name="Milisecond">ミリ秒</param>
+		</member>
+		<member name="M:zawa_ch.Time.FromDays(System.Double)">
+			<summary>日単位の時間から新しいTime型を返します</summary>
+			<param name="value">基となる時間</param>
+		</member>
+		<member name="M:zawa_ch.Time.FromHours(System.Double)">
+			<summary>時単位の時間から新しいTime型を返します</summary>
+			<param name="value">基となる時間</param>
+		</member>
+		<member name="M:zawa_ch.Time.FromMinute(System.Double)">
+			<summary>分単位の時間から新しいTime型を返します</summary>
+			<param name="value">基となる時間</param>
+		</member>
+		<member name="M:zawa_ch.Time.FromSecond(System.Double)">
+			<summary>秒単位の時間から新しいTime型を返します</summary>
+			<param name="value">基となる時間</param>
+		</member>
+		<member name="M:zawa_ch.Time.FromMiliSecond(System.Double)">
+			<summary>ミリ秒単位の時間から新しいTime型を返します</summary>
+			<param name="value">基となる時間</param>
+		</member>
+		<member name="M:zawa_ch.Time.ToString()">
+			<summary>このオブジェクトを文字列に変換します</summary>
+		</member>
+		<member name="M:zawa_ch.Time.ToString(System.String)">
+			<summary>書式を用いてオブジェクトを文字列に変換します</summary>
+			<param name="format">書式文字列</param>
+		</member>
+
+		<!-- zawa_ch.Rotation -->
+		<member name="T:zawa_ch.Rotation">
+			<summary>空間での回転状態を保持するベクトルオブジェクトを用いて<see cref="zawa_ch.Point3D"/>の回転などの機能を提供します</summary>
+		</member>
+		<member name="P:zawa_ch.Rotation.A">
+			<summary>Xを軸とする回転の角度</summary>
+		</member>
+		<member name="P:zawa_ch.Rotation.B">
+			<summary>Yを軸とする回転の角度</summary>
+		</member>
+		<member name="P:zawa_ch.Rotation.C">
+			<summary>Zを軸とする回転の角度</summary>
+		</member>
+		<member name="M:zawa_ch.Rotation.Rotation(System.Double,System.Double,System.Double)">
+			<summary>このオブジェクトの新しいインスタンスを作成します</summary>
+			<param name="a">Xを軸とする回転の角度</param>
+			<param name="b">Yを軸とする回転の角度</param>
+			<param name="c">Zを軸とする回転の角度</param>
+		</member>
+		<member name="M:zawa_ch.Rotation.operator +(zawa_ch.Point3D,zawa_ch.Rotation)">
+			<summary>右オペランドで指定された<see cref="zawa_ch.Rotation"/>の値だけ回転させた<see cref="zawa_ch.Point3D"/>オブジェクトを返します</summary>
+			<param name="Left">回転の対象</param>
+			<param name="Right">回転量</param>
+		</member>
+		<member name="M:zawa_ch.Rotation.operator -(zawa_ch.Point3D,zawa_ch.Rotation)">
+			<summary>右オペランドで指定された<see cref="zawa_ch.Rotation"/>の値だけ回転させた<see cref="zawa_ch.Point3D"/>オブジェクトを返します</summary>
+			<param name="Left">回転の対象</param>
+			<param name="Right">回転量</param>
+		</member>
+		<member name="M:zawa_ch.Rotation.explicit operator Rotation(zawa_ch.Point3D)">
+			<summary>
+				<see cref="zawa_ch.Point3D"/>オブジェクトを<see cref="zawa_ch.Rotation"/>に変換します
+				長さの情報は失われるため注意してください
+			</summary>
+		</member>
+		<member name="M:zawa_ch.Rotation.explicit operator Point3D(zawa_ch.Rotation)">
+			<summary>
+				<see cref="zawa_ch.Rotation"/>オブジェクトを<see cref="zawa_ch.Point3D"/>に変換します
+				Y軸の角度の情報は失われるため注意してください
+			</summary>
+		</member>
+
+		<!-- zawa_ch.Section -->
+		<member name="T:zawa_ch.Section">
+			<summary>2つの点の区間情報を保持します</summary>
+		</member>
+		<member name="P:zawa_ch.Section.Min">
+			<summary>区間の最小値</summary>
+		</member>
+		<member name="P:zawa_ch.Section.Max">
+			<summary>区間の最大値</summary>
+		</member>
+		<member name="P:zawa_ch.Section.Dist">
+			<summary>区間の距離</summary>
+		</member>
+		<member name="P:zawa_ch.Section.Section(System.Double,System.Double)">
+			<summary>このオブジェクトを初期化します</summary>
+			<param name="min">区間の最小値</param>
+			<param name="max">区間の最大値</param>
+		</member>
+		<member name="P:zawa_ch.Section.IsInSection(System.Double)">
+			<summary>与えられた点が区間に含まれるかどうかを返します</summary>
+			<param name="Point">判断を行う対象となる点</param>
+		</member>
+		<member name="P:zawa_ch.Section.Clip(System.Double)">
+			<summary>与えられた値を区間に含まれるように丸められた値にして返します</summary>
+			<param name="Point">丸めを行う値</param>
+		</member>
+		<member name="P:zawa_ch.Section.Loop(System.Double)">
+			<summary>区間がループしているとみたときの与えられた値の区間中の位置を返します</summary>
+			<param name="Point">処理を行う値</param>
+		</member>
+
+		<!-- zawa_ch.LogServer -->
+		<member name="T:zawa_ch.LogServer">
+			<summary>ログの書き込みを行うための機能を提供します</summary>
+		</member>
+		<member name="M:zawa_ch.LogServer.Write(System.String)">
+			<summary>ログを書き込みます</summary>
+			<param name="logtext">ログとして書き込む内容</param>
+		</member>
+		<member name="M:zawa_ch.LogServer.RemoveAt(System.Int32)">
+			<summary>指定したインデックスにあるログを削除します</summary>
+			<param name="index">削除するログのインデックス</param>
+			<exception cref="AugmentOutOfRangeException">存在しないインデックスを参照するとスローされます</exception>
+		</member>
+		<member name="M:zawa_ch.LogServer.Remove()">
+			<summary>一番古いログを削除します</summary>
+			<exception cref="AugmentOutOfRangeException">ログに何も書き込まれていない場合にスローされます</exception>
+		</member>
+		<member name="M:zawa_ch.LogServer.RemoveOld(System.DateTime)">
+			<summary>指定した時刻より前のログを削除します</summary>
+			<param name="Filter">削除対象にする時刻</param>
+		</member>
+		<member name="M:zawa_ch.LogServer.Clear()">
+			<summary>ログをすべて削除します</summary>
+		</member>
+		<member name="M:zawa_ch.LogServer.ToString()">
+			<summary>ログの内容を文字列に変換します</summary>
+		</member>
+
+		<!-- zawa_ch.UI -->
+
+		<!-- zawa_ch.UI.Color -->
+		<member name="T:zawa_ch.UI.Color">
+			<summary>高度な色情報の保持、及び各色空間の相互変換を行う機能を提供します</summary>
+		</member>
+		<member name="T:zawa_ch.UI.Color.ColorHSV">
+			<summary>色相(Hue)、彩度(Saturation)、明度(Value)のコンポーネントを持つ色空間オブジェクト</summary>
+		</member>
+		<member name="T:zawa_ch.UI.Color.ColorRGB">
+			<summary>赤(Red)、緑(Green)、青(Blue)のコンポーネントを持つ色空間オブジェクト</summary>
+		</member>
+		<member name="T:zawa_ch.UI.Color.ColorCMYK">
+			<summary>シアン(Cyan)、マゼンタ(Magenta)、イエロー(Yellow)、キープレート(Key Plate)のコンポーネントを持つ色空間オブジェクト</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Color.RGB">
+			<summary>このオブジェクトのRGB色空間表記</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Color.HSV">
+			<summary>このオブジェクトのHSV色空間表記</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Color.CMYK">
+			<summary>このオブジェクトのCMYK色空間表記</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Color.RGB24">
+			<summary>このオブジェクトの16進(0xRRGGBB)表記</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Color.ARGB32">
+			<summary>このオブジェクトの16進(0xAARRGGBB)表記</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Color.alpha">
+			<summary>色の透明度</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Color.operator+(zawa_ch.UI.Color,zawa_ch.UI.Color)">
+			<summary>色の加算処理を行います</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Color.operator-(zawa_ch.UI.Color,zawa_ch.UI.Color)">
+			<summary>色の減算処理を行います</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Color.operator*(zawa_ch.UI.Color,zawa_ch.UI.Color)">
+			<summary>色の乗算処理を行います</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Color.operator/(zawa_ch.UI.Color,zawa_ch.UI.Color)">
+			<summary>色のスクリーン処理を行います</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color()">
+			<summary>新しく空のカラーオブジェクトを初期化します</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(zawa_ch.UI.Color.ColorRGB)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入するColorRGBオブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(zawa_ch.UI.Color.ColorHSV)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入するColorHSVオブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(zawa_ch.UI.Color.ColorCMYK)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入するColorCMYKオブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(System.UInt32)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入する16進数値(0xRRGGBB)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(zawa_ch.UI.Color.ColorRGB,System.Double)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入するColorRGBオブジェクト</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(zawa_ch.UI.Color.ColorHSV,System.Double)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入するColorHSVオブジェクト</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(zawa_ch.UI.Color.ColorCMYK,System.Double)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入するColorCMYKオブジェクト</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Color(System.UInt32,System.Double)">
+			<summary>新しくカラーオブジェクトを初期化します</summary>
+			<param name="InitColor">代入する16進数値(0xRRGGBB)</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(zawa_ch.UI.Color.ColorRGB)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入するColorRGBオブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(zawa_ch.UI.Color.ColorRGB,System.Double)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入するColorRGBオブジェクト</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(zawa_ch.UI.Color.ColorHSV)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入するColorHSVオブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(zawa_ch.UI.Color.ColorHSV,System.Double)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入するColorHSVオブジェクト</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(zawa_ch.UI.Color.ColorCMYK)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入するColorCMYKオブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(zawa_ch.UI.Color.ColorCMYK,System.Double)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入するColorCMYKオブジェクト</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(System.UInt32)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入する16進数値(0xRRGGBB)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.Set(System.UInt32,System.Double)">
+			<summary>カラーオブジェクトに値を代入します</summary>
+			<param name="SetColor">代入する16進数値(0xRRGGBB)</param>
+			<param name="alpha">透過率</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetRGB(System.Double,System.Double,System.Double)">
+			<summary>それぞれの要素に値を代入した新しいColorRGBオブジェクトを返します</summary>
+			<param name="red">色の赤成分(0.0 ...1.0)</param>
+			<param name="green">色の緑成分(0.0 ...1.0)</param>
+			<param name="blue">色の青成分(0.0 ... 1.0)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetRGB(System.UInt32)">
+			<summary>要素に値を代入した新しいColorRGBオブジェクトを返します</summary>
+			<param name="SetColor">代入する16進数値(0xRRGGBB)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetRGB(zawa_ch.UI.Color.ColorCMYK)">
+			<summary>他オブジェクトから値を変換した新しいColorRGBオブジェクトを返します</summary>
+			<param name="ConvrtFrom">変換元となるColorCMYK色空間オブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetRGB(zawa_ch.UI.Color.ColorHSV)">
+			<summary>他オブジェクトから値を変換した新しいColorRGBオブジェクトを返します</summary>
+			<param name="ConvertFrom">変換元となるColorHSV色空間オブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetHSV(System.Double,System.Double,System.Double)">
+			<summary>それぞれの要素に値を代入した新しいColorHSVオブジェクトを返します</summary>
+			<param name="Hue">色の色相成分(0.0 ... 1.0)</param>
+			<param name="Saturation">色の彩度成分(0.0 ... 1.0)</param>
+			<param name="Value">色の明度成分(0.0 ... 1.0)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetHSV(zawa_ch.UI.Color.ColorRGB)">
+			<summary>他オブジェクトから値を変換した新しいColorHSVオブジェクトを返します</summary>
+			<param name="ConvertFrom">変換元となるColorRGB色空間オブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetHSV(zawa_ch.UI.Color.ColorCMYK)">
+			<summary>他オブジェクトから値を変換した新しいColorHSVオブジェクトを返します</summary>
+			<param name="ConvrtFrom">変換元となるColorCMYK色空間オブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetCMYK(System.Double,System.Double,System.Double,System.Double)">
+			<summary>それぞれの要素に値を代入した新しいColorCMYKオブジェクトを返します</summary>
+			<param name="cyan">色のシアン成分(0.0 ... 1.0)</param>
+			<param name="magenta">色のマゼンタ成分(0.0 ... 1.0)</param>
+			<param name="yellow">色のイエロー成分(0.0 ... 1.0)</param>
+			<param name="keyplate">色のキープレート成分(0.0 ... 1.0)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetCMYK(zawa_ch.UI.Color.ColorRGB)">
+			<summary>他オブジェクトから値を変換した新しいColorCMYKオブジェクトを返します</summary>
+			<param name="ConvertFrom">変換元となるColorRGB色空間オブジェクト</param>
+		</member>
+		<member name="M:zawa_ch.UI.Color.SetCMYK(zawa_ch.UI.Color.ColorHSV)">
+			<summary>他オブジェクトから値を変換した新しいColorCMYKオブジェクトを返します</summary>
+			<param name="ConvrtFrom">変換元となるColorHSV色空間オブジェクト</param>
+		</member>
+
+		<!-- zawa_ch.UI.Color_Preset -->
+		<member name="T:zawa_ch.UI.Color_Preset">
+			<summary>
+				定義されている色のプリセット
+				データソース: 原色大辞典(http://www.colordic.org)
+			</summary>
+		</member>
+		<member name="T:zawa_ch.UI.Color_Preset.HTML">
+			<summary>HTMLにて定義されている140色</summary>
+		</member>
+		<member name="T:zawa_ch.UI.Color_Preset.Symbol_Metro">
+			<summary>地下鉄で用いられているシンボルカラー</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.GinzaLineOrange">
+			<summary>銀座線オレンジ</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.MarunouchiLineRed">
+			<summary>丸の内線レッド</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.HibiyaLineSilver">
+			<summary>日比谷線シルバー</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.TozaiLinesky">
+			<summary>東西線スカイ</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.ChiyodaLineGreen">
+			<summary>千代田線グリーン</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.YurakuchoLineGold">
+			<summary>有楽町線ゴールド</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.HanzomonLinePurple">
+			<summary>半蔵門線パープル</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.NambokuLineEmerald">
+			<summary>南北線エメラルド</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.FukutoshinLineBrown">
+			<summary>副都心線ブラウン</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.AsakusaLineRose">
+			<summary>浅草線ローズ</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.MitaLineBlue">
+			<summary>三田線ブルー</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.ShinjukuLineLeaf">
+			<summary>新宿線リーフ</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.OedoLineRuby">
+			<summary>大江戸線ルビー</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.MidosujiLineRed">
+			<summary>御堂筋線 臙脂</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.TanimachiLinePurple">
+			<summary>谷町線 京紫</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.YotsubashiLineBlue">
+			<summary>四つ橋線 縹</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.ChuoLineGreen">
+			<summary>中央線 緑</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.SennnichimaeLinePink">
+			<summary>千日前線 紅梅</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.SakaisujiLineMarron">
+			<summary>堺筋線 マルーン</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.NagahoritsurumiryokuchiLineYellowGreen">
+			<summary>長堀鶴見緑地線 萌黄</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.ImazatosujiLineOrange">
+			<summary>今里筋線 柑子</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Color_Preset.Symbol_Metro.NankoporttownLineCerulianBlue ">
+			<summary>南港ポートタウン線 セルリアンブルー</summary>
+		</member>
+
+		<!-- zawa_ch.UI.Easing -->
+		<member name="T:zawa_ch.UI.Easing">
+			<summary>イージング関数を用いた動作を行うための機能を提供します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.LINEAR">
+			<summary>線形に移動します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUADRATIC_BOOST">
+			<summary>二次曲線的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUADRATIC_STALL">
+			<summary>二次曲線的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUADRATIC_BOOSTSTALL">
+			<summary>二次曲線的に加減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.CUBIC_BOOST">
+			<summary>三次曲線的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.CUBIC_STALL">
+			<summary>三次曲線的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.CUBIC_BOOSTSTALL">
+			<summary>三次曲線的に加減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUARTIC_BOOST">
+			<summary>四次曲線的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUARTIC_STALL">
+			<summary>四次曲線的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUARTIC_BOOSTSTALL">
+			<summary>四次曲線的に加減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUINTIC_BOOST">
+			<summary>五次曲線的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUINTIC_STALL">
+			<summary>五次曲線的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.QUINTIC_BOOSTSTALL">
+			<summary>五次曲線的に加減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.SINUSOIDAL_BOOST">
+			<summary>三角関数的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.SINUSOIDAL_STALL">
+			<summary>三角関数的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.SINUSOIDAL_BOOSTSTALL">
+			<summary>三角関数的に加減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.EXPONENTIAL_BOOST">
+			<summary>指数関数的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.EXPONENTIAL_STALL">
+			<summary>指数関数的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.EXPONENTIAL_BOOSTSTALL">
+			<summary>指数関数的に加減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.CIRCULAR_BOOST">
+			<summary>平方根関数的に加速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.CIRCULAR_STALL">
+			<summary>平方根関数的に減速します</summary>
+		</member>
+		<member name="F:zawa_ch.UI.Easing.CIRCULAR_BOOSTSTALL">
+			<summary>平方根関数的に加減速します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing.Each">
+			<summary>現在時刻における現在の位置を返します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing.Destination">
+			<summary>イージングによる移動先を指定し、移動を開始します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing.Function">
+			<summary>イージングに使用する関数を取得・設定します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing.Duration">
+			<summary>イージングの過渡状態の時間をミリ秒で取得・設定します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing.IsArrival">
+			<summary>イージングによって点が移動先に到着したかどうかを返します</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Easing.Easing()">
+			<summary>新しい空のイージングオブジェクトを作成します</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Easing.Easing(System.Int32,System.Double)">
+			<summary>新しいイージングオブジェクトを作成します</summary>
+			<param name="Function">使用するイージング関数</param>
+			<param name="Duration">過渡状態の時間の長さ(ミリ秒)</param>
+		</member>
+		<member name="M:zawa_ch.UI.Easing.Easing(System.Int32,System.Double,System.Double)">
+			<summary>新しいイージングオブジェクトを作成します</summary>
+			<param name="Function">使用するイージング関数</param>
+			<param name="Duration">過渡状態の時間の長さ(ミリ秒)</param>
+			<param name="Origin">初期位置</param>
+		</member>
+		<member name="M:zawa_ch.UI.Easing.calc(System.Double,System.Double,System.Double,System.Int32)">
+			<summary>イージング関数の計算を行います</summary>
+			<param name="Orig">イージングの起点</param>
+			<param name="Dest">イージングの終点</param>
+			<param name="acctuary">イージングに対する現在の状態(0.0 ... 1.0)</param>
+			<param name="mode">使用する関数</param>
+		</member>
+
+		<!-- zawa_ch.UI.Easing2D -->
+		<member name="T:zawa_ch.UI.Easing2D">
+			<summary>2次元の値を持つイージングオブジェクト</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing2D.Point">
+		  <summary>
+				イージングを適用した現在の位置を返します
+				値を代入することでその値を終点としたイージングを開始します
+			</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing2D.Function">
+			<summary>使用するイージング関数を取得・設定します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing2D.Duration">
+			<summary>イージングの過渡状態の時間の長さをミリ秒で取得・設定します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing2D.IsPole">
+		<summary>イージングを行うための座標系が極座標かを取得・設定します</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Easing2D.Easing2D(System.Boolean,System.Int32,System.Double)">
+			<summary>新しいEasing2Dオブジェクトを作成します</summary>
+			<param name="IsPole">座標系に極座標を使用するフラグ</param>
+			<param name="Function">使用するイージング関数</param>
+			<param name="Duration">イージング過渡状態の時間の長さ</param>
+		</member>
+		<member name="M:zawa_ch.UI.Easing2D.Easing2D(System.Boolean,System.Int32,System.Double,zawa_ch.Point2D)">
+			<summary>新しいEasing2Dオブジェクトを作成します</summary>
+			<param name="IsPole">座標系に極座標を使用するフラグ</param>
+			<param name="Function">使用するイージング関数</param>
+			<param name="Duration">イージング過渡状態の時間の長さ</param>
+			<param name="Origin">初期位置</param>
+		</member>
+		<member name="M:zawa_ch.UI.Easing2D.Easing2D(System.Boolean,System.Double)">
+			<summary>新しいPoint2Dオブジェクトを作成します</summary>
+			<param name="IsPole">座標系に極座標を使用するフラグ</param>
+			<param name="Origin">初期位置</param>
+		</member>
+
+		<!-- zawa_ch.UI.Easing3D -->
+		<member name="T:zawa_ch.UI.Easing3D">
+			<summary>3次元の値を持つイージングオブジェクト</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing3D.Point">
+		  <summary>
+				イージングを適用した現在の位置を返します
+				値を代入することでその値を終点としたイージングを開始します
+			</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing3D.Function">
+			<summary>使用するイージング関数を取得・設定します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing3D.Duration">
+			<summary>イージングの過渡状態の時間の長さをミリ秒で取得・設定します</summary>
+		</member>
+		<member name="P:zawa_ch.UI.Easing3D.IsPole">
+		<summary>イージングを行うための座標系が極座標かを取得・設定します</summary>
+		</member>
+		<member name="M:zawa_ch.UI.Easing3D.Easing3D(System.Boolean,System.Int32,System.Double)">
+			<summary>新しいEasing3Dオブジェクトを作成します</summary>
+			<param name="IsPole">座標系に極座標を使用するフラグ</param>
+			<param name="Function">使用するイージング関数</param>
+			<param name="Duration">イージング過渡状態の時間の長さ</param>
+		</member>
+		<member name="M:zawa_ch.UI.Easing3D.Easing3D(System.Boolean,System.Int32,System.Double,zawa_ch.Point3D)">
+			<summary>新しいEasing3Dオブジェクトを作成します</summary>
+			<param name="IsPole">座標系に極座標を使用するフラグ</param>
+			<param name="Function">使用するイージング関数</param>
+			<param name="Duration">イージング過渡状態の時間の長さ</param>
+			<param name="Origin">初期位置</param>
+		</member>
+		<member name="M:zawa_ch.UI.Easing3D.Easing3D(System.Boolean,System.Double)">
+			<summary>新しいEasing3Dオブジェクトを作成します</summary>
+			<param name="IsPole">座標系に極座標を使用するフラグ</param>
+			<param name="Origin">初期位置</param>
+		</member>
+
+		<!-- zawa_ch.UI.D3Cam -->
+		<member name="T:zawa_ch.UI.D3Cam">
+			<summary>カメラの位置・向きなどの情報を保持し、3次元上の点を2次元平面上に投影する機能を提供します</summary>
+		</member>
+		<member name="T:zawa_ch.UI.D3Cam.aspect_const">
+			<summary>画面アスペクト比の定数</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Square">
+			<summary>正方形(1:1)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Standard">
+			<summary>標準のディスプレイアスペクト比(4:3)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Wide">
+			<summary>ハイビジョンなどに用いられるアスペクト比(16:9)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.SXGA">
+			<summary>SXGAなどのアスペクト比(5:4)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.WXGA">
+			<summary>WXGAなどのアスペクト比(16:10)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Academy">
+			<summary>映画標準のアスペクト比(4.135:3)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Vista">
+			<summary>ビスタサイズ(1.85:1)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.CinemaScope">
+			<summary>シネマスコープ(12:5)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Panavision">
+			<summary>パナビジョン(2.4:1)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.DigitalCinema">
+			<summary>デジタルシネマに用いられるアスペクト比(256:135)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.iPad">
+			<summary>iPadのアスペクト比(3:4)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.iPhone">
+			<summary>iPhone3・4のアスペクト比(2:3)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.iPhone5">
+			<summary>iPhone5のアスペクト比(40:71)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.iPhone6">
+			<summary>iPhone6のアスペクト比(0.562:1)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.iPhone6Plus">
+			<summary>iPhone6 Plusのアスペクト比(9:16)</summary>
+		</member>
+		<member name="F:zawa_ch.UI.D3Cam.aspect_const.Android">
+			<summary>一般的なAndroid端末のアスペクト比(9:16)</summary>
+		</member>
+		<member name="P:zawa_ch.UI.D3Cam.CameraPoint">
+			<summary>カメラの位置</summary>
+		</member>
+		<member name="P:zawa_ch.UI.D3Cam.CameraDirection">
+			<summary>カメラの向き</summary>
+		</member>
+		<member name="P:zawa_ch.UI.D3Cam.Zoom">
+			<summary>カメラのズーム倍率</summary>
+		</member>
+		<member name="P:zawa_ch.UI.D3Cam.SAR">
+			<summary>縦を1としたアスペクト比(ScreenAspectRatio)</summary>
+		</member>
+		<member name="P:zawa_ch.UI.D3Cam.RenderDist">
+			<summary>最大・最小描画距離</summary>
+		</member>
+		<member name="M:zawa_ch.UI.D3Cam.D3Cam()">
+			<summary>このオブジェクトの空のインスタンスを作成します</summary>
+		</member>
+		<member name="M:zawa_ch.UI.D3Cam.D3Cam(zawa_ch.Point3D,zawa_ch.Rotation)">
+			<summary>このオブジェクトの新しいインスタンスを作成します</summary>
+			<param name="CameraPoint">カメラの位置</param>
+			<param name="CameraDirection">カメラの向き</param>
+		</member>
+		<member name="M:zawa_ch.UI.D3Cam.D3Cam(zawa_ch.Point3D,zawa_ch.Rotation,System.Double)">
+			<summary>このオブジェクトの新しいインスタンスを作成します</summary>
+			<param name="CameraPoint">カメラの位置</param>
+			<param name="CameraDirection">カメラの向き</param>
+			<param name="SAR">縦を1としたアスペクト比(ScreenAspectRatio)</param>
+		</member>
+		<member name="M:zawa_ch.UI.D3Cam.D3Cam(zawa_ch.Point3D,zawa_ch.Rotation,System.Double,System.Double)">
+			<summary>このオブジェクトの新しいインスタンスを作成します</summary>
+			<param name="CameraPoint">カメラの位置</param>
+			<param name="CameraDirection">カメラの向き</param>
+			<param name="SAR">縦を1としたアスペクト比(ScreenAspectRatio)</param>
+			<param name="Zoom">カメラのズーム倍率</param>
+		</member>
+		<member name="M:zawa_ch.UI.D3Cam.D3Cam(zawa_ch.Point3D,zawa_ch.Rotation,System.Double,System.Double,zawa_ch.Section)">
+			<summary>このオブジェクトの新しいインスタンスを作成します</summary>
+			<param name="CameraPoint">カメラの位置</param>
+			<param name="CameraDirection">カメラの向き</param>
+			<param name="SAR">縦を1としたアスペクト比(ScreenAspectRatio)</param>
+			<param name="Zoom">カメラのズーム倍率</param>
+			<param name="RenderDist">最大・最小描画距離</param>
+		</member>
+		<member name="M:zawa_ch.UI.D3Cam.Projection(zawa_ch.Point3D)">
+			<summary>3次元上の点を現在の設定を用いて2次元平面に投影します</summary>
+			<param name="Point">変換する3次元の点</param>
+			<returns>変換に成功した場合変換後の値(x,yともに画面中央を0として-1.0 ... 0.0 ... 1.0)が、カメラの後ろにあるなどで変換に失敗した場合空の<see cref="zawa_ch.Point2D"/>オブジェクトが返ります</returns>
+		</member>
+
+	</members>
+</doc>
