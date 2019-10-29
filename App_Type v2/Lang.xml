@@ -10,6 +10,8 @@
   <ts_TotalclearText>総クリア数</ts_TotalclearText>
   <ts_TotalscoreText>合計スコア</ts_TotalscoreText>
   <ts_ClearText>スコアデータのクリア</ts_ClearText>
+  <ts_TotalPlayTimeText>総プレイ時間</ts_TotalPlayTimeText>
+  <ts_TypeSpeedText>タイピング速度</ts_TypeSpeedText>
   <ts_ClearreallyText>...実行しますか?</ts_ClearreallyText>
   <ts_HelpText>ヘルプ</ts_HelpText>
   <ts_AboutText>このアプリケーションについて</ts_AboutText>
@@ -17,4 +19,6 @@
   <tx_LastscoreText>スコア</tx_LastscoreText>
   <tx_LasthighscoreText>ハイスコア</tx_LasthighscoreText>
   <tx_RemaintimeText>TIME</tx_RemaintimeText>
+  <tx_PlaytimeText>プレイ時間</tx_PlaytimeText>
+  <tx_TypePSecUnit>Type/sec</tx_TypePSecUnit>
 </Lang>

@@ -34,6 +34,7 @@
 			this.SpeedLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ScoreLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.HighscoreLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.PlaytimetoolStrip = new System.Windows.Forms.ToolStripStatusLabel();
 			this.MainMenu = new System.Windows.Forms.MenuStrip();
 			this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,8 @@
 			this.acctuaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.totalClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.totalScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TotalPlaytimetoolStrip = new System.Windows.Forms.ToolStripMenuItem();
+			this.TypeSpeedtoolStrip = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.clearStatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +75,8 @@
 			this.MainStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SpeedLabel,
             this.ScoreLabel,
-            this.HighscoreLabel});
+            this.HighscoreLabel,
+            this.PlaytimetoolStrip});
 			this.MainStatus.Location = new System.Drawing.Point(0, 458);
 			this.MainStatus.Name = "MainStatus";
 			this.MainStatus.Size = new System.Drawing.Size(960, 22);
@@ -103,6 +107,12 @@
 			this.HighscoreLabel.Text = "HIGHSCORE";
 			this.HighscoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// PlaytimetoolStrip
+			// 
+			this.PlaytimetoolStrip.Name = "PlaytimetoolStrip";
+			this.PlaytimetoolStrip.Size = new System.Drawing.Size(54, 17);
+			this.PlaytimetoolStrip.Text = "Playtime";
+			// 
 			// MainMenu
 			// 
 			this.MainMenu.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -125,6 +135,7 @@
             this.resetToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
+			this.mainToolStripMenuItem.MergeIndex = 0;
 			this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
 			this.mainToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.mainToolStripMenuItem.Text = "Main";
@@ -163,8 +174,11 @@
             this.acctuaryToolStripMenuItem,
             this.totalClearToolStripMenuItem,
             this.totalScoreToolStripMenuItem,
+            this.TotalPlaytimetoolStrip,
+            this.TypeSpeedtoolStrip,
             this.toolStripSeparator2,
             this.clearStatToolStripMenuItem});
+			this.statToolStripMenuItem.MergeIndex = 1;
 			this.statToolStripMenuItem.Name = "statToolStripMenuItem";
 			this.statToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.statToolStripMenuItem.Text = "Stat";
@@ -173,48 +187,62 @@
 			// 
 			this.totalTypeToolStripMenuItem.Enabled = false;
 			this.totalTypeToolStripMenuItem.Name = "totalTypeToolStripMenuItem";
-			this.totalTypeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.totalTypeToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.totalTypeToolStripMenuItem.Text = "TotalType";
 			// 
 			// totalCollectToolStripMenuItem
 			// 
 			this.totalCollectToolStripMenuItem.Enabled = false;
 			this.totalCollectToolStripMenuItem.Name = "totalCollectToolStripMenuItem";
-			this.totalCollectToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.totalCollectToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.totalCollectToolStripMenuItem.Text = "TotalCollect";
 			// 
 			// acctuaryToolStripMenuItem
 			// 
 			this.acctuaryToolStripMenuItem.Enabled = false;
 			this.acctuaryToolStripMenuItem.Name = "acctuaryToolStripMenuItem";
-			this.acctuaryToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.acctuaryToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.acctuaryToolStripMenuItem.Text = "Acctuary";
 			// 
 			// totalClearToolStripMenuItem
 			// 
 			this.totalClearToolStripMenuItem.Enabled = false;
 			this.totalClearToolStripMenuItem.Name = "totalClearToolStripMenuItem";
-			this.totalClearToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.totalClearToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.totalClearToolStripMenuItem.Text = "TotalClear";
 			// 
 			// totalScoreToolStripMenuItem
 			// 
 			this.totalScoreToolStripMenuItem.Enabled = false;
 			this.totalScoreToolStripMenuItem.Name = "totalScoreToolStripMenuItem";
-			this.totalScoreToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.totalScoreToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.totalScoreToolStripMenuItem.Text = "TotalScore";
+			// 
+			// TotalPlaytimetoolStrip
+			// 
+			this.TotalPlaytimetoolStrip.Enabled = false;
+			this.TotalPlaytimetoolStrip.Name = "TotalPlaytimetoolStrip";
+			this.TotalPlaytimetoolStrip.Size = new System.Drawing.Size(149, 22);
+			this.TotalPlaytimetoolStrip.Text = "TotalPlaytime";
+			// 
+			// TypeSpeedtoolStrip
+			// 
+			this.TypeSpeedtoolStrip.Enabled = false;
+			this.TypeSpeedtoolStrip.Name = "TypeSpeedtoolStrip";
+			this.TypeSpeedtoolStrip.Size = new System.Drawing.Size(149, 22);
+			this.TypeSpeedtoolStrip.Text = "TypeSpeed";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(146, 6);
 			// 
 			// clearStatToolStripMenuItem
 			// 
 			this.clearStatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearToolStripMenuItem});
 			this.clearStatToolStripMenuItem.Name = "clearStatToolStripMenuItem";
-			this.clearStatToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.clearStatToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.clearStatToolStripMenuItem.Text = "ClearStat";
 			// 
 			// clearToolStripMenuItem
@@ -231,6 +259,7 @@
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.versionToolStripMenuItem,
             this.aboutToolStripMenuItem});
+			this.helpToolStripMenuItem.MergeIndex = 2;
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
 			this.helpToolStripMenuItem.Text = "Help";
@@ -278,10 +307,10 @@
 			// 
 			this.MainLabel.AutoSize = true;
 			this.MainLabel.BackColor = System.Drawing.Color.Transparent;
-			this.MainLabel.Font = new System.Drawing.Font("游ゴシック", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.MainLabel.Font = new System.Drawing.Font("游ゴシック", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.MainLabel.Location = new System.Drawing.Point(12, 96);
 			this.MainLabel.Name = "MainLabel";
-			this.MainLabel.Size = new System.Drawing.Size(174, 42);
+			this.MainLabel.Size = new System.Drawing.Size(147, 35);
 			this.MainLabel.TabIndex = 3;
 			this.MainLabel.Text = "MainLabel";
 			// 
@@ -393,6 +422,9 @@
 		private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel PlaytimetoolStrip;
+		private System.Windows.Forms.ToolStripMenuItem TotalPlaytimetoolStrip;
+		private System.Windows.Forms.ToolStripMenuItem TypeSpeedtoolStrip;
 	}
 }
 

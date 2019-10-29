@@ -11,12 +11,29 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Xml.Serialization;
+using zawa_ch;
 using zawa_ch.UI;
 
 namespace App_Type_v2
 {
 	public partial class MainForm : Form
 	{
+		// キャリブレーションエリア
+		/// <summary> データのバージョン </summary>
+		public const double CurDataVer = 1.20;
+		/// <summary> 初期残り時間 </summary>
+		public const int InitTimerTime = 100;
+		/// <summary> 基準となるタイマー間隔 </summary>
+		public const int StdTick = 200;
+		public const bool IsPowSpd = true;
+		/// <summary> タイマースピードアップの度合い </summary>
+		public const double SpdUpRate = 0.005;
+		/// <summary> 残り時間増加の比率 </summary>
+		public const int TimeRecoveryRate = 2;
+		/// <summary> 残り時間バーの長さ縮尺率 </summary>
+		public const double RemTimeBarLength_Rate = 1.000;
+		//
+
 		const int WM_SYSCOMMAND = 0x112;
 		const int SC_MOVE = 0xF010;
 
@@ -38,6 +55,7 @@ namespace App_Type_v2
 		bool Game_IsStarted = false;
 		bool Game_IsReady = false;
 		bool Game_IsResult = false;
+		Timer_CTUP Playtime = new Timer_CTUP();
 		int ReadyCount = 4;
 		int Index = -1;
 		int Typed = 0;
@@ -48,7 +66,7 @@ namespace App_Type_v2
 		string InputKey = "";
 		string Disp_Jpn = "";
 		string Disp_Kana = "";
-		int RemainTime = 100;
+		int RemainTime = InitTimerTime;
 		int RemTimeBuffer = 0;
 		Easing RemainTimeBarSize = new Easing(Easing.CIRCULAR_STALL, 200, 0);
 		Random rnd = new Random();
@@ -73,10 +91,12 @@ namespace App_Type_v2
 			AppSetting.TotalCollectType += CollectType;
 			AppSetting.TotalClear += Cleared;
 			AppSetting.TotalScore += Score;
+			AppSetting.TotalPlaytime += Playtime.Each;
 			Game_IsStarted = false;
 			Game_IsReady = false;
 			Game_IsResult = false;
 			MainTick.Stop();
+			Playtime.Reset();
 			ReadyCounter.Stop();
 			ReadyCounter.Interval = 1;
 			ReadyCount = 4;
@@ -84,11 +104,12 @@ namespace App_Type_v2
 			Typed = 0;
 			CollectType = 0;
 			Cleared = 0;
+			Score_get = 0;
 			InputKey = "";
 			Disp_Jpn = "";
 			Disp_Kana = "";
 			Score = 0;
-			RemainTime = 100;
+			RemainTime = InitTimerTime;
 			MainLabel.Text = ProductName;
 			CaptionLabel.Text = "Typing Game ver " + ProductVersion;
 			InputLabel.Text = "";
@@ -167,6 +188,11 @@ namespace App_Type_v2
 			{
 				DataSave();
 			}
+			if (AppSetting.DataVersion < CurDataVer)
+			{
+				DataClear();
+				AppSetting.DataVersion = CurDataVer;
+			}
 		}
 		//*/
 		void DataSave()
@@ -179,6 +205,8 @@ namespace App_Type_v2
 		//*/
 		void DataClear()
 		{
+			Game_Reset();
+			File.Copy(Directory.GetCurrentDirectory() + @"\Settings.xml", Directory.GetCurrentDirectory() + @"\Settings.xml.bak_" + DateTime.Now.ToString("yyyyMMdd-HHmmss"));
 			AppSetting = new Settings();
 		}
 		//*/
@@ -230,7 +258,7 @@ namespace App_Type_v2
 		{
 			if (RemainTime != RemTimeBuffer)
 			{
-				RemainTimeBarSize.Destination = RemainTime;
+				RemainTimeBarSize.Destination = RemainTime * RemTimeBarLength_Rate;
 				RemTimeBuffer = RemainTime;
 			}
 			RemainTimeBar.Width = (int)RemainTimeBarSize.Each;
@@ -241,6 +269,9 @@ namespace App_Type_v2
 			acctuaryToolStripMenuItem.Text = AppLang.ts_AcctuaryText + ": " + (100.0 * (AppSetting.TotalCollectType + CollectType) / (AppSetting.TotalType + Typed)).ToString("f2") + "%";
 			totalClearToolStripMenuItem.Text = AppLang.ts_TotalclearText + ": " + (AppSetting.TotalClear + Cleared).ToString();
 			totalScoreToolStripMenuItem.Text = AppLang.ts_TotalscoreText + ": " + (AppSetting.TotalScore + Score).ToString();
+			TotalPlaytimetoolStrip.Text = AppLang.ts_TotalPlayTimeText + ": " + (AppSetting.TotalPlaytime + Playtime.Each).ToString("H:mm:ss.fff");
+			TypeSpeedtoolStrip.Text = AppLang.ts_TypeSpeedText + ": " + ((AppSetting.TotalCollectType + CollectType) / (AppSetting.TotalPlaytime + Playtime.Each).TotalSeconds).ToString("f5") + " " + AppLang.tx_TypePSecUnit;
+			PlaytimetoolStrip.Text = Playtime.Each.ToString("mm:ss:fff");
 		}
 		//*/
 		Dictionary<string,string> FindKey(Dictionary<string,string> From, string Find)
@@ -308,6 +339,7 @@ namespace App_Type_v2
 					{
 						InputKey = InputKey + key;
 						CollectType++;
+						RemainTime += scorebuf * TimeRecoveryRate;
 					}
 					else if (scorebuf < 0)
 					{
@@ -317,7 +349,7 @@ namespace App_Type_v2
 					else if (scorebuf > 0)
 					{
 						CollectType++;
-						RemainTime += scorebuf * 4;
+						RemainTime += scorebuf * TimeRecoveryRate;
 						Score += scorebuf;
 						Score_get += scorebuf;
 						Disp_Kana = Disp_Kana.Substring(scorebuf);
@@ -330,11 +362,11 @@ namespace App_Type_v2
 					RemainTime += Type_kana[Index].Length;
 					TextPick();
 				}
-				MainTick.Interval = (int)(200 / (1.0 + (0.005 * Score_get)));
+				MainTick.Interval = (int)(StdTick / (IsPowSpd ? (Math.Pow(2.0, SpdUpRate * Score_get)) : (1.0 + (SpdUpRate * Score_get))));
 				MainLabel.Text = Disp_Jpn;
 				CaptionLabel.Text = Disp_Kana;
 				InputLabel.Text = InputKey;
-				SpeedLabel.Text = "Speed: x" + (1.0 + 0.005 * Score_get).ToString("f2");
+				SpeedLabel.Text = "Speed: x" + (IsPowSpd ? (Math.Pow(2.0, SpdUpRate * Score_get)) : (1.0 + (SpdUpRate * Score_get))).ToString("f2");
 				RemainTimeLabel.Text = AppLang.tx_RemaintimeText + ": " + RemainTime.ToString();
 			}
 		}
@@ -347,6 +379,7 @@ namespace App_Type_v2
 				if (RemainTime <= 0)
 				{
 					MainTick.Stop();
+					Playtime.Stop();
 					Game_IsStarted = false;
 					Game_IsResult = true;
 					MainLabel.Text = AppLang.tx_GameoverText;
@@ -361,8 +394,12 @@ namespace App_Type_v2
 						CaptionLabel.Text = AppLang.tx_LastscoreText + ": " + Score.ToString();
 					}
 					InputLabel.Text = "";
+					RemainTimeLabel.Text = AppLang.tx_PlaytimeText + ": " + Playtime.Each.ToString("M:ss:fff") + " -> " + ((double)CollectType / Playtime.Each.TotalSeconds).ToString("F3") + " " + AppLang.tx_TypePSecUnit;
 				}
-				RemainTimeLabel.Text = AppLang.tx_RemaintimeText + ": " + RemainTime.ToString();
+				else
+				{
+					RemainTimeLabel.Text = AppLang.tx_RemaintimeText + ": " + RemainTime.ToString();
+				}
 			}
 		}
 
@@ -374,13 +411,14 @@ namespace App_Type_v2
 			{
 				ReadyCounter.Stop();
 				MainTick.Start();
+				Playtime.Start();
 				Game_IsReady = false;
 				TextPick();
-				MainTick.Interval = (int)(200 / (1.00 + (0.05 * Cleared)));
+				MainTick.Interval = StdTick;
 				MainLabel.Text = Disp_Jpn;
 				CaptionLabel.Text = Disp_Kana;
 				InputLabel.Text = InputKey;
-				SpeedLabel.Text = "Speed: x" + (1.0 + 0.05 * Cleared).ToString("f2");
+				SpeedLabel.Text = "Speed: x" + (1.0).ToString("f2");
 			}
 			else
 			{
@@ -414,12 +452,19 @@ namespace App_Type_v2
 
 	public class Settings
 	{
+		double _ver;
 		int _high;
 		long _totaltype;
 		long _totalcollect;
 		long _totalclear;
 		long _totalscore;
+		Time _totalplaytime;
 
+		public double DataVersion
+		{
+			get { return _ver; }
+			set { _ver = value; }
+		}
 		public int HighScore
 		{
 			get { return _high; }
@@ -445,14 +490,21 @@ namespace App_Type_v2
 			get { return _totalscore; }
 			set { _totalscore = value; }
 		}
+		public Time TotalPlaytime
+		{
+			get { return _totalplaytime; }
+			set { _totalplaytime = value; }
+		}
 
 		public Settings()
 		{
+			_ver = 0.0;
 			_high = 0;
 			_totaltype = 0;
 			_totalcollect = 0;
 			_totalclear = 0;
 			_totalscore = 0;
+			_totalplaytime = Time.Zero;
 		}
 	}
 
@@ -467,6 +519,8 @@ namespace App_Type_v2
 		string _tsacctuary;
 		string _tstotalclear;
 		string _tstotalscore;
+		string _tstotalpt;
+		string _tstypespd;
 		string _tsclear;
 		string _tsclearreally;
 		string _tshelp;
@@ -475,6 +529,8 @@ namespace App_Type_v2
 		string _txlastscore;
 		string _txlasthighscore;
 		string _txremtime;
+		string _txplaytime;
+		string _txtpsunit;
 
 		public string ts_StartText { get { return _tsstart; } set { _tsstart = value; } }
 		public string ts_ResetText { get { return _tsreset; } set { _tsreset = value; } }
@@ -485,6 +541,8 @@ namespace App_Type_v2
 		public string ts_AcctuaryText { get { return _tsacctuary; } set { _tsacctuary = value; } }
 		public string ts_TotalclearText { get { return _tstotalclear; } set { _tstotalclear = value; } }
 		public string ts_TotalscoreText { get { return _tstotalscore; } set { _tstotalscore = value; } }
+		public string ts_TotalPlayTimeText { get { return _tstotalpt; } set { _tstotalpt = value; } }
+		public string ts_TypeSpeedText { get { return _tstypespd; } set { _tstypespd = value; } }
 		public string ts_ClearText { get { return _tsclear; } set { _tsclear = value; } }
 		public string ts_ClearreallyText { get { return _tsclearreally; } set { _tsclearreally = value; } }
 		public string ts_HelpText { get { return _tshelp; } set { _tshelp = value; } }
@@ -493,6 +551,8 @@ namespace App_Type_v2
 		public string tx_LastscoreText { get { return _txlastscore; } set { _txlastscore = value; } }
 		public string tx_LasthighscoreText { get { return _txlasthighscore; } set { _txlasthighscore = value; } }
 		public string tx_RemaintimeText { get { return _txremtime; } set { _txremtime = value; } }
+		public string tx_PlaytimeText { get { return _txplaytime; } set { _txplaytime = value; } }
+		public string tx_TypePSecUnit { get { return _txtpsunit; } set { _txtpsunit = value; } }
 
 		public Lang()
 		{
@@ -505,6 +565,8 @@ namespace App_Type_v2
 			_tsacctuary = "Acctualy";
 			_tstotalclear = "TotalClear";
 			_tstotalscore = "TotalScore";
+			_tstotalpt = "TotalPlaytime";
+			_tstypespd = "TypeSpeed";
 			_tsclear = "Clear";
 			_tsclearreally = "...Really?";
 			_tshelp = "Help";
@@ -513,6 +575,8 @@ namespace App_Type_v2
 			_txlastscore = "Score";
 			_txlasthighscore = "Highscore";
 			_txremtime = "TIME";
+			_txplaytime = "Playtime";
+			_txtpsunit = "Type/sec";
 		}
 	}
 }
